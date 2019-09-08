@@ -1,0 +1,48 @@
+package hydrodrams;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		int test_case, number_array, index, indext_left, index_right, sum, max_indext;
+		int[] mang = new int[1000];
+		Scanner scanner  = new Scanner(System.in);
+		System.out.println("Nhập số lượng test case");
+		test_case = scanner.nextInt();
+		for (int i = 0; i < test_case; i++) {
+			System.out.println("Nhập chiều dài của mảng");
+			number_array = scanner.nextInt();
+			sum = 0;
+			index = 0;
+			max_indext = 0;
+			System.out.println("Nhập giá trị của cột");
+			for (int j = 0; j < number_array; j++) {
+				mang[j] = scanner.nextInt();
+			}
+			for (int k = 0; k < number_array; k++) {
+				if (max_indext <mang[k]) {
+					index = k;
+					max_indext = mang[k];
+				}
+			}
+			indext_left = mang[0] ;
+			for (int j = 1; j < index; j++) {
+				if (indext_left < mang[j]) {
+					indext_left = mang[j];
+					continue;
+				}
+				sum = sum + (indext_left - mang[j]);
+			}
+			index_right = mang[number_array-1];
+			for (int j = number_array-2; j > index; j++) {
+				if (index_right > mang[j]) {
+					index_right = mang[j];
+					continue;
+				}
+				sum = sum + (index_right - mang[j]);
+			}
+			System.out.println(sum);
+		}
+	}
+	
+}

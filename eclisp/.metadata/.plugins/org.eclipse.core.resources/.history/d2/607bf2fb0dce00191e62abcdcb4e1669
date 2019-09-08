@@ -1,0 +1,9 @@
+package hydrodrams;
+
+import java.util.Scanner;
+
+public class Main {
+	int test_case, n, number, index, index_left, index_right;
+	int[] mang = new int[1000];
+	Scanner scanner = new Scanner(System.in);
+}

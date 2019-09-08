@@ -1,0 +1,30 @@
+package divisibility;
+
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int test_case,n, x, y, number;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("nhập số lượng test case");
+		test_case = scanner.nextInt();
+		for (int i = 0; i < test_case; i++) {
+			System.out.println("Nhấp số n");
+			n = scanner.nextInt();
+			System.out.println("Nhập x");
+			x =scanner.nextInt();
+			System.out.println("Nhập y");
+			y = scanner.nextInt();
+			number = x;
+			while(number<n) {
+				if (number%y==0) {
+					System.out.println(number);
+				}
+				 number += x;
+			}
+		}
+	}
+
+}

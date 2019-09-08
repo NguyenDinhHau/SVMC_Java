@@ -1,0 +1,65 @@
+package queee;
+
+import java.util.Scanner;
+
+public class Main {
+	public static void main(String[] args) {
+		int[] mang1 = new int[1005];
+		int[] indext = new int[1005];
+		int test_case, n;
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Nhập số lượng test case");
+		test_case = scanner.nextInt();
+		
+		for (int i = 0; i < test_case; i++) {
+			System.out.println("nhấp chiều dài mảng");
+			n = scanner.nextInt();
+			System.out.println("Nhập giá trị mảng");
+			for (int j = 0; j < n; j++) {
+				mang1[j] = scanner.nextInt();
+			}
+			System.out.println("Nhập vị trí của phần tử");
+			for (int j = 0; j < n; j++) {
+				indext[j] = scanner.nextInt();
+			}
+			sort(mang1,indext,n);
+//			select();
+		}
+	}
+	public static void sort(int[] mang, int[] indext, int n) {
+		int temp, index;
+		for (int i = 0; i < n-1; i++) {
+			for (int j = i+1; j < n; j++) {
+				if (mang[j] >mang[i]) {
+					temp =mang[i];
+					mang[i] = mang[j];
+					mang[j] = temp;
+					
+					temp = indext[i];
+					indext[i] = indext[j];
+					indext[j] = temp;
+				}
+			}
+		}
+		for (int i = 0; i < n; i++) {
+			System.out.print(indext[i] + "\t");
+		}
+	}
+//	public static void select() {
+//		int temp ;
+//		for (int i = 0; i < n; i++) {
+//			if (indext[i] != i) {
+//				for (int j = i; j >indext[i]; j--) {
+//					temp = mang1[j];
+//					mang1[j] = mang1[j-1];
+//					mang1[j-1] = temp;
+//				}
+//			}
+//		}
+//		for (int i = 0; i < n; i++) {
+//			System.out.print(mang1[i] + "\t");
+//		}
+//	}
+	
+
+}
