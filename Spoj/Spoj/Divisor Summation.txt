@@ -1,0 +1,29 @@
+#include <iostream>
+#include <cmath>
+
+using namespace std;
+int main()
+{
+	int number_test, number, sum, temp;
+	cin>>number_test;
+	while(number_test--)
+	{
+		sum = 0;
+		cin>>number;
+		temp = sqrt((double)number);
+		if(temp!=number)
+		{
+		sum = 1;
+		for(int i=temp; i>=2; i--)
+		{
+			if(number%i==0){
+				int a = number/i;
+				if(a!=i)sum += (a+i);
+				else sum += a;
+			}
+		}
+		}
+		cout<<sum<<endl;
+	}
+	return 0;
+}

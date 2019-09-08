@@ -1,0 +1,37 @@
+#include <iostream>
+#include <stack>
+using namespace std;
+int main()
+{
+	int number_truck, index, indexTop,a;
+	int index_truck[1005];
+	bool isArange;
+	while(1)
+	{
+		index = 1;
+		isArange = true;
+		stack<int> base;
+		stack<int> temp;
+		cin>>number_truck;
+		if(number_truck==0)break;
+		for(int i=0; i<number_truck; i++)cin>>index_truck[i];
+		for(int i=number_truck-1; i>=0; i--)base.push(index_truck[i]);
+		while(!base.empty())
+		{
+			indexTop = base.top();
+			if(indexTop!=index){
+				if(!temp.empty()){
+					while(!temp.empty()&&temp.top()==index)
+						{
+							index++; temp.pop();
+						}
+					if(!temp.empty()&&indexTop>temp.top()){isArange=false; break;}
+				}
+				temp.push(indexTop);
+			}
+			else {index++;}
+			base.pop();
+		}
+		(isArange==true)?cout<<"yes"<<endl:cout<<"no"<<endl;
+	}
+}

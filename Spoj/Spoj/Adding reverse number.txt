@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int reversed_number(int number)
+{
+	int k=0;
+	while(number)
+	{
+		k = k*10+(number%10);
+		number = number/10;
+	}
+	return k;
+}
+int main()
+{
+	int number_test, one, two;
+	int i,j;
+	scanf("%d",&number_test);
+	for(i=0; i<number_test; i++)
+	{
+		scanf("%d", &one);
+		scanf("%d", &two);
+		printf("%d\n",reversed_number(reversed_number(one)+reversed_number(two)));
+	}
+	return 0;
+}

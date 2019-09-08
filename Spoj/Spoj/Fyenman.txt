@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main()
+{
+	int size=0,count;
+	int i, j, k;
+	while(1)
+	{
+		count = 0;
+		scanf("%d",&size);
+		if(size==0) return 0;
+		for(k=0; k<size; k++)
+		{
+			for(i=0; i<size;i++)
+				for(j=0; j<size; j++)
+				{
+					if(((i+k)<size)&&((j+k)<size))count++;
+					else break;
+				}
+		}
+		printf("%d\n",count);
+	}
+	return 0;
+}

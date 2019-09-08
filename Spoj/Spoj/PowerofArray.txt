@@ -1,0 +1,32 @@
+#include <stdio.h>
+
+int Frequen[50003];
+int main()
+{
+	int min, max;
+	int number_test, len, number;
+	scanf("%d",&number_test);
+	while(number_test--)
+	{
+		long long int result = 0;
+		max = 0;
+		min = 50000;
+		scanf("%d",&len);
+		int number_arr = len;
+		while(len--){
+			scanf("%d",&number);
+			if(number<min)min = number;
+			if(number>max)max = number;
+			Frequen[number]++;
+		}
+		int count = 0;
+		for(int i=min; i<=max; i++)
+		{
+			if(Frequen[i]==0)continue;
+			count = count + Frequen[i];
+			result += ((long long int)count*Frequen[i]);
+		}
+		for(int i=min;i<=max; i++)Frequen[i]=0;;
+		printf("%lld\n",result);
+	}
+}

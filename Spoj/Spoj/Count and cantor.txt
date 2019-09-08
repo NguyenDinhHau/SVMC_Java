@@ -1,0 +1,25 @@
+#include <cstdio>
+#include <cstring>
+using namespace std;
+
+int main()
+{
+	int number_test, count,i,direct,temp,index;
+	scanf("%d",&number_test);
+	while(number_test--)
+	{
+		scanf("%d",&count);
+		temp = count;
+		for(i=1; i<count; i++)
+		{
+			temp -= i;
+			if(temp<=0)break;
+			index = temp-1;
+		}
+		if(i%2==1)direct = 1;//up
+		else direct = 0;
+		if(direct==1)printf("TERM %d IS %d/%d\n",count,i-index,1+index);
+		else printf("TERM %d IS %d/%d\n",count,1+index,i-index);
+	}
+	return 0;
+}

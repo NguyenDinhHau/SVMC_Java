@@ -1,0 +1,66 @@
+#include <iostream>
+#include <iomanip>
+#include <cstring>
+#include <string>
+
+using namespace std;
+char matrix[100][100];
+char visited[100][100];
+int x[4] = {0, -1, 1, 0};
+int y[4] = {1, 0, 0, -1};
+void viruts_haha(int i, int j,int temp)
+{
+	visited[i][j] = temp; // danh dau vi tri da di qua
+	for(int k=0; k<4; k++){// tim diem lan can
+		int index_x = i+x[k];
+		int index_y = j+y[k];
+		if(matrix[index_x][index_y]==2)
+			if(visited[index_x][index_y]==0)
+				viruts_haha(index_x,index_y, temp);
+	}
+}
+int main()
+{
+	int test_number, row, col, cout_room, cout_human;
+	string row_txt;
+	cin>>test_number;
+	while(test_number--)
+	{
+		memset(matrix,0,sizeof(matrix));
+		memset(visited,0,sizeof(matrix));
+		cout_room = 0; cout_human = 0;
+ 		cin>>row; cin>>col;
+		for(int i=0; i<row; i++){
+		cin>>row_txt;
+			int check_rom = 0;
+			for(int j=0; j<col; j++){
+				if(row_txt[j]!='#'){
+					matrix[i][j] = 2;
+					if(row_txt[j]=='*')cout_human++;
+					if(check_rom==1){
+						cout_room++;
+						matrix[i][j-1] = 1;
+						check_rom = 0;
+					}
+				}
+				else check_rom = 1;
+			}
+		}
+		int temp = 0;
+		for(int i=1; i<row-1; i++)
+		{
+			for(int j=0; j<col; j++)
+			{
+				if(visited[i][j]!=0)continue;// da duoc danh dau thi bo qua
+				if(matrix[i][j]==2)// duyet phong tiep theo
+				{
+					temp++;
+					viruts_haha(i, j, temp);
+				}
+			}
+		}
+
+		cout<<fixed<<setprecision(2)<<(double)cout_human/temp<<endl;
+	}
+	return 0;
+}

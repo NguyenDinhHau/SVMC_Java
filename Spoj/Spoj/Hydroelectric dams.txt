@@ -1,0 +1,50 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+int height[10001];
+int length, left_index, right_index;
+int get_max_left(int index)
+{
+	int temp = height[index];
+	for(int i=0; i<index; i++){if(height[i]>temp){temp = height[i]; left_index = i;}}
+	return temp;
+}
+int get_max_right(int index)
+{
+	int temp = height[index];
+	for(int i=index+1; i<length; i++){if(height[i]>temp){temp = height[i]; right_index = i;}}
+	return temp;
+}
+int main()
+{
+	int number_test;
+	//freopen("data.txt","r",stdin);
+	cin>>number_test;
+	for(int test=0; test<number_test; test++)
+	{
+		cin>>length;
+		for(int i=0; i<length; i++)
+		{
+			cin>>height[i];
+		}
+		left_index = -1; right_index = -1;
+		int result = 0; 
+		int max_left, max_right, temp_high;
+		for(int i=0; i<length; i++)
+		{
+			// neu i van nam giua 2 thang max left va max right vua tim duoc 
+			if(i>left_index&&i<right_index&&height[i]<=temp_high)
+			{
+					result += min(max_left, max_right) - height[i]; continue;
+			}
+			max_left = get_max_left(i);
+			max_right = get_max_right(i);
+			if(max_left==height[i]||max_right==height[i]){left_index=-1; right_index = -1; continue;}// neu cot hien tai la cot cao nhat
+			temp_high = min(max_left,max_right);
+			result += temp_high - height[i];
+		}
+		cout<<result<<endl;
+	}
+	return 0;
+}

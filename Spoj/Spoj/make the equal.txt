@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+int main()
+{
+	int number_test, len;
+	int sum;
+	freopen("data.txt","r",stdin);
+	scanf("%d",&number_test);
+	while(number_test--)
+	{
+		sum = 0;
+		cin>>len;
+		for(int i=0; i<len; i++){
+			int temp;
+			scanf("%d",&temp);
+			sum += temp;
+		}
+		if(sum%len!=0)printf("%d\n",len-1);
+		else printf("%d\n", len);
+	}
+}

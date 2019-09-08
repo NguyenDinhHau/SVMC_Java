@@ -1,0 +1,27 @@
+#include <cstdio>
+#include <cstring>
+
+using namespace std;
+char matrix_string[20][20];
+int main()
+{
+	int col,row,i,j;
+	char s[201];
+	while(1)
+	{
+		scanf("%d",&col);
+		if(col==0)break;
+		scanf("%s", &s);
+		row = strlen(s)/col;
+		for(i=0; i<row; i++)
+			for(j=0; j<col; j++)
+			{
+				if(i%2==0)matrix_string[i][j]=s[i*col+j];
+				else matrix_string[i][j]= s[i*col+col-1-j];
+			}
+		for(j=0; j<col; j++)
+			for(i=0; i<row; i++)printf("%c",matrix_string[i][j]);
+		printf("\n");
+	}
+	return 0;
+}
